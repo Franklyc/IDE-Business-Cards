@@ -4,10 +4,10 @@
 
 // Default fields for the business card
 const defaultFields = [
-    { key: 'name', value: 'Todd' },
-    { key: 'title', value: 'Developer' },
-    { key: 'email', value: 'inbox@qtdd.com' },
-    { key: 'link', value: 'bizcard.qtdd.com' }
+    { key: 'name', value: 'Frank' },
+    { key: 'title', value: 'ML Researcher' },
+    { key: 'email', value: 'your.email@example.com' },
+    { key: 'link', value: 'your-website.com' }
 ];
 
 // Current format - 'json' or 'yaml'

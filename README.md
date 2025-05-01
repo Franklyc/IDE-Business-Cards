@@ -38,7 +38,7 @@ This is a static website that can be easily deployed to GitHub Pages:
 2. Go to your repository settings
 3. Navigate to Pages section
 4. Choose the branch you want to deploy (usually `main`)
-5. Set the folder to `/` (root) or `/src`
+5. Set the folder to `/` (root)
 6. Click Save
 
 Your IDE Business Card Generator will be available at `https://[your-username].github.io/IDE-Business-Cards/`
@@ -49,7 +49,7 @@ To run this project locally:
 
 1. Clone the repository
 2. Open the project folder
-3. Open `src/index.html` in your browser
+3. Open `index.html` in your browser
 
 No build steps or server are required as this is a pure HTML/CSS/JavaScript application.
 
