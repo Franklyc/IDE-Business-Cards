@@ -1,0 +1,127 @@
+/* Theme styles */
+
+/* Dark theme (default) */
+.theme-dark {
+    --window-bg: #1e1e1e;
+    --title-bar-bg: #252525;
+    --toolbar-bg: #2d2d2d;
+    --line-number-color: #858585;
+    --code-color: #d4d4d4;
+    --keyword-color: #569cd6;
+    --property-color: #9cdcfe;
+    --string-color: #ce9178;
+    --comment-color: #6a9955;
+    --title-color: #eee;
+}
+
+/* Light theme */
+.theme-light {
+    --window-bg: #ffffff;
+    --title-bar-bg: #f3f3f3;
+    --toolbar-bg: #e8e8e8;
+    --line-number-color: #999999;
+    --code-color: #333333;
+    --keyword-color: #0000ff;
+    --property-color: #a31515;
+    --string-color: #a31515;
+    --comment-color: #008000;
+    --title-color: #333333;
+}
+
+/* Monokai theme */
+.theme-monokai {
+    --window-bg: #272822;
+    --title-bar-bg: #1e1f1c;
+    --toolbar-bg: #2d2e27;
+    --line-number-color: #90908a;
+    --code-color: #f8f8f2;
+    --keyword-color: #f92672;
+    --property-color: #a6e22e;
+    --string-color: #e6db74;
+    --comment-color: #75715e;
+    --title-color: #f8f8f2;
+}
+
+/* GitHub theme */
+.theme-github {
+    --window-bg: #ffffff;
+    --title-bar-bg: #f6f8fa;
+    --toolbar-bg: #e1e4e8;
+    --line-number-color: #979daa;
+    --code-color: #24292e;
+    --keyword-color: #d73a49;
+    --property-color: #005cc5;
+    --string-color: #032f62;
+    --comment-color: #6a737d;
+    --title-color: #24292e;
+}
+
+/* Tomorrow Night theme */
+.theme-tomorrow {
+    --window-bg: #1d1f21;
+    --title-bar-bg: #282a2e;
+    --toolbar-bg: #373b41;
+    --line-number-color: #969896;
+    --code-color: #c5c8c6;
+    --keyword-color: #b294bb;
+    --property-color: #81a2be;
+    --string-color: #b5bd68;
+    --comment-color: #969896;
+    --title-color: #c5c8c6;
+}
+
+/* Dracula theme */
+.theme-dracula {
+    --window-bg: #282a36;
+    --title-bar-bg: #343746;
+    --toolbar-bg: #44475a;
+    --line-number-color: #6272a4;
+    --code-color: #f8f8f2;
+    --keyword-color: #ff79c6;
+    --property-color: #50fa7b;
+    --string-color: #f1fa8c;
+    --comment-color: #6272a4;
+    --title-color: #f8f8f2;
+}
+
+/* Apply theme variables */
+.card-window {
+    background-color: var(--window-bg);
+}
+
+.title-bar {
+    background-color: var(--title-bar-bg);
+}
+
+.window-title {
+    color: var(--title-color);
+}
+
+.window-toolbar {
+    background-color: var(--toolbar-bg);
+}
+
+.line-numbers {
+    color: var(--line-number-color);
+}
+
+.code-content {
+    color: var(--code-color);
+}
+
+/* Syntax highlighting classes that will be applied by JavaScript */
+.keyword {
+    color: var(--keyword-color);
+}
+
+.property {
+    color: var(--property-color);
+}
+
+.string {
+    color: var(--string-color);
+}
+
+.comment {
+    color: var(--comment-color);
+}

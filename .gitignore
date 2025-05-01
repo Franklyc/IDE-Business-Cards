@@ -1,0 +1,18 @@
+# IDE Business Card Generator project files
+node_modules/
+.DS_Store
+.env
+
+# Build files
+dist/
+build/
+.cache/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
