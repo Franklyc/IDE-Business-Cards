@@ -12,12 +12,21 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 800px;
     width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    padding: 0 20px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 /* Card Preview styles */
@@ -25,8 +34,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     gap: 20px;
     transition: all 0.3s var(--transition-timing);
+    margin-bottom: 20px;
 }
 
 .card-preview {
@@ -36,7 +47,8 @@ body {
 }
 
 .card-window {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
@@ -123,13 +135,18 @@ body {
 }
 
 /* Controls */
+.controls-container {
+    width: 100%;
+    margin-top: 20px;
+}
+
 .controls {
     display: flex;
     gap: 15px;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .format-control, .theme-control {
@@ -167,10 +184,12 @@ select {
 
 /* Form styles */
 .form-container {
+    width: 100%;
     background-color: var(--background-color);
     padding: 25px;
     border-radius: 10px;
     box-shadow: var(--card-shadow);
+    margin-bottom: 20px;
 }
 
 .fields-container {
@@ -238,30 +257,21 @@ select {
 }
 
 /* Responsive adjustments */
-@media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 40px;
-    }
-    
-    .editor-container, .form-container {
-        flex: 1;
-    }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 600px) {
     .card-window {
-        width: 100%;
-        max-width: 450px;
+        max-width: 100%;
     }
     
     .controls {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
     }
     
-    .form-container {
-        margin-top: 20px;
+    .format-control, .theme-control {
+        width: 100%;
+    }
+    
+    .select-styled {
+        width: 100%;
     }
 }

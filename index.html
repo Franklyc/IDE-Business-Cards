@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="src/css/additional-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <div class="container">
+<body>    <div class="container">
+        <header class="app-header">
+            <h1>IDE Business Card Generator</h1>
+            <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+        
         <div class="editor-container section-content">
-            <header class="app-header">
-                <h1>IDE Business Card Generator</h1>
-                <button class="theme-toggle" aria-label="Toggle dark/light mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </header>
             <div class="card-preview">
                 <div class="card-window" id="card-window">
                     <div class="title-bar">
@@ -46,7 +46,21 @@
                     </div>
                 </div>
             </div>
-              <div class="controls">
+        </div>
+        
+        <div class="form-container card section-content">
+            <h2>Customize Your Card</h2>
+            <div class="fields-container" id="fields-container">
+                <!-- Default fields will be added via JavaScript -->
+            </div>
+            <div class="field-actions">
+                <button id="add-field-btn" class="add-btn btn primary">
+                    <i class="fas fa-plus"></i> Add Field
+                </button>
+            </div>
+        </div>        <div class="controls-container section-content card">
+            <h2>Card Styling Options</h2>
+            <div class="controls">
                 <div class="format-control">
                     <label for="format-select">Format:</label>
                     <select id="format-select" class="select-styled">
@@ -72,18 +86,7 @@
                 </button>
             </div>
         </div>
-          <div class="form-container card section-content">
-            <h2>Customize Your Card</h2>
-            <div class="fields-container" id="fields-container">
-                <!-- Default fields will be added via JavaScript -->
-            </div>
-            <div class="field-actions">
-                <button id="add-field-btn" class="add-btn btn primary">
-                    <i class="fas fa-plus"></i> Add Field
-                </button>            </div>
-        </div>
-    </div>
-    <footer class="app-footer">
+    </div>    <footer class="app-footer">
         <p>© 2025 IDE Business Card Generator | Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i> for developers</p>
     </footer>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>

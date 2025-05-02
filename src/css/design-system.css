@@ -48,12 +48,11 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
+    color: var(--text-color);    background-color: var(--background-color);
     transition: background-color 0.3s var(--transition-timing),
                 color 0.3s var(--transition-timing);
     min-height: 100vh;
-    padding: 20px;
+    padding: 30px 20px;
 }
 
 a {
