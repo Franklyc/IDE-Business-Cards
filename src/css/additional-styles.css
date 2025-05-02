@@ -114,13 +114,14 @@
 
 .app-footer {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 20px 0;
     color: var(--text-color);
     opacity: 0.7;
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
     width: 100%;
+    display: block;
 }
 
 /* Additional spacing & refinements for vertical layout */
@@ -140,4 +141,13 @@
     border-radius: 10px;
     box-shadow: var(--card-shadow);
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Force vertical layout overrides */
+.container > * {
+    width: 100%;
+    max-width: 100%;
 }

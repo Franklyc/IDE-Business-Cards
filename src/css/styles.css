@@ -7,8 +7,12 @@
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
 }
 
 .container {
@@ -17,8 +21,9 @@ body {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 30px;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .app-header {
@@ -38,6 +43,10 @@ body {
     gap: 20px;
     transition: all 0.3s var(--transition-timing);
     margin-bottom: 20px;
+}
+
+.section-content {
+    width: 100%;
 }
 
 .card-preview {
@@ -257,6 +266,20 @@ select {
 }
 
 /* Responsive adjustments */
+@media (min-width: 601px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .editor-container, 
+    .form-container,
+    .controls-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 600px) {
     .card-window {
         max-width: 100%;
