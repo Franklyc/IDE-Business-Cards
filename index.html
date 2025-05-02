@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDE Business Card Generator</title>    <link rel="stylesheet" href="src/css/styles.css">
+    <title>IDE Business Card Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="src/css/design-system.css">
+    <link rel="stylesheet" href="src/css/styles.css">
     <link rel="stylesheet" href="src/css/themes.css">
+    <link rel="stylesheet" href="src/css/additional-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <div class="editor-container">
+        <div class="editor-container section-content">
+            <header class="app-header">
+                <h1>IDE Business Card Generator</h1>
+                <button class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </header>
             <div class="card-preview">
                 <div class="card-window" id="card-window">
                     <div class="title-bar">
@@ -35,11 +46,10 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="controls">
+              <div class="controls">
                 <div class="format-control">
                     <label for="format-select">Format:</label>
-                    <select id="format-select">
+                    <select id="format-select" class="select-styled">
                         <option value="json" selected>JSON</option>
                         <option value="yaml">YAML</option>
                     </select>
@@ -47,7 +57,7 @@
                 
                 <div class="theme-control">
                     <label for="theme-select">Theme:</label>
-                    <select id="theme-select">
+                    <select id="theme-select" class="select-styled">
                         <option value="dark" selected>Dark</option>
                         <option value="light">Light</option>
                         <option value="monokai">Monokai</option>
@@ -57,24 +67,27 @@
                     </select>
                 </div>
                 
-                <button id="export-btn" class="export-btn">
+                <button id="export-btn" class="export-btn btn primary">
                     <i class="fas fa-download"></i> Export PNG
                 </button>
             </div>
         </div>
-        
-        <div class="form-container">
+          <div class="form-container card section-content">
             <h2>Customize Your Card</h2>
             <div class="fields-container" id="fields-container">
                 <!-- Default fields will be added via JavaScript -->
             </div>
             <div class="field-actions">
-                <button id="add-field-btn" class="add-btn">
+                <button id="add-field-btn" class="add-btn btn primary">
                     <i class="fas fa-plus"></i> Add Field
-                </button>
-            </div>
+                </button>            </div>
         </div>
-    </div>    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    </div>
+    <footer class="app-footer">
+        <p>© 2025 IDE Business Card Generator | Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i> for developers</p>
+    </footer>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="src/js/design-system.js"></script>
     <script src="src/js/themes.js"></script>
     <script src="src/js/export.js"></script>
     <script src="src/js/app.js"></script>

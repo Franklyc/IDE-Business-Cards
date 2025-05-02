@@ -9,7 +9,8 @@ function exportToPNG() {
     
     // Disable the button during export
     exportBtn.disabled = true;
-    exportBtn.textContent = 'Exporting...';
+    const originalContent = exportBtn.innerHTML;
+    exportBtn.innerHTML = '<span class="loading-spinner"></span>Exporting...';
     
     // Use html2canvas to convert the card to an image
     html2canvas(cardWindow, {

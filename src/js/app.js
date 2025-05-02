@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Set default theme
     applyTheme('dark');
+    
+    // Update theme toggle based on system preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (prefersDarkScheme.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        const themeToggle = document.querySelector('.theme-toggle');
+        if (themeToggle) {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    }
 });
 
 // Initialize form fields
@@ -78,6 +88,12 @@ function setupEventListeners() {
     // Add field button
     const addFieldBtn = document.getElementById('add-field-btn');
     addFieldBtn.addEventListener('click', () => {
+        // Add click animation to button
+        addFieldBtn.classList.add('clicked');
+        setTimeout(() => {
+            addFieldBtn.classList.remove('clicked');
+        }, 300);
+        
         const row = addFieldRow();
         row.querySelector('input').focus();
         updateCardContent();
