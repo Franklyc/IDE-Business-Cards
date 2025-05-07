@@ -58,30 +58,30 @@ body {
 .card-window {
     width: 100%;
     max-width: 500px;
-    border-radius: 8px;
+    border-radius: 10px; /* Increased border-radius */
     overflow: hidden;
-    box-shadow: var(--card-shadow);
-    background-color: #1e1e1e; /* Keeping IDE theme colors unchanged */
+    box-shadow: var(--card-shadow); /* Ensure this uses the updated variable from design-system */
+    /* background-color will be controlled by theme variables */
     transition: all 0.3s var(--transition-timing);
 }
 
 .title-bar {
-    height: 40px;
-    background-color: #252525;
+    height: 36px; /* Reduced height */
+    /* background-color will be controlled by theme variables */
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 12px; /* Adjusted padding */
 }
 
 .window-controls {
     display: flex;
-    gap: 8px;
-    margin-right: 15px;
+    gap: 6px; /* Reduced gap */
+    margin-right: 12px; /* Adjusted margin */
 }
 
 .control {
-    width: 12px;
-    height: 12px;
+    width: 10px; /* Reduced size */
+    height: 10px; /* Reduced size */
     border-radius: 50%;
 }
 
@@ -99,45 +99,45 @@ body {
 
 .window-title {
     flex-grow: 1;
-    color: #eee;
-    font-size: 14px;
+    /* color will be controlled by theme variables */
+    font-size: 13px; /* Reduced font size */
 }
 
 .window-actions {
-    color: #aaa;
+    /* color will be controlled by theme variables or a more neutral one */
 }
 
 .window-toolbar {
-    height: 30px;
-    background-color: #2d2d2d;
+    height: 32px; /* Adjusted height */
+    /* background-color will be controlled by theme variables */
     display: flex;
     align-items: center;
-    padding: 0 15px;
-    gap: 15px;
-    color: #aaa;
+    padding: 0 12px; /* Adjusted padding */
+    gap: 12px; /* Reduced gap */
+    /* color will be controlled by theme variables */
 }
 
 .editor-content {
     display: flex;
-    padding: 10px 0;
-    min-height: 200px;
+    padding: 12px 0; /* Adjusted padding */
+    min-height: 220px; /* Increased min-height */
 }
 
 .line-numbers {
-    width: 30px;
-    padding: 0 8px;
-    color: #858585;
+    width: 35px; /* Adjusted width */
+    padding: 0 10px 0 12px; /* Adjusted padding (top/bottom 0, right 10, left 12) */
+    /* color will be controlled by theme variables */
     text-align: right;
     user-select: none;
-    font-size: 14px;
+    font-size: 13px; /* Reduced font size */
     line-height: 1.5;
 }
 
 .code-content {
     flex-grow: 1;
-    padding: 0 8px;
-    color: #d4d4d4;
-    font-size: 14px;
+    padding: 0 12px; /* Adjusted padding */
+    /* color will be controlled by theme variables */
+    font-size: 13px; /* Reduced font size */
     line-height: 1.5;
     white-space: pre;
     font-family: 'Menlo', 'Consolas', 'Monaco', 'Liberation Mono', 'Lucida Console', monospace;
@@ -151,11 +151,11 @@ body {
 
 .controls {
     display: flex;
-    gap: 15px;
+    gap: 20px; /* Increased gap */
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Removed margin as parent has padding */
 }
 
 .format-control, .theme-control {
@@ -165,38 +165,43 @@ body {
 }
 
 select {
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    background-color: white;
+    padding: 10px 12px; /* Adjusted padding */
+    border-radius: var(--input-border-radius, 0.375rem); /* Use variable from design system */
+    border: 1px solid var(--border-color); /* Use variable from design system */
+    background-color: var(--background-color); /* Use variable from design system */
+    color: var(--text-color); /* Use variable from design system */
     outline: none;
-    font-size: 14px;
+    font-size: 1rem; /* Consistent font size */
 }
 
 .export-btn {
-    padding: 8px 16px;
-    background-color: #222;
-    color: white;
+    padding: 10px 20px; /* Consistent padding */
+    /* background-color and color should be handled by .btn.primary if applied */
+    /* background-color: var(--primary-color); */ /* Example if .btn.primary is not on element */
+    /* color: white; */
     border: none;
-    border-radius: 5px;
+    border-radius: var(--btn-border-radius, 0.375rem); /* Use variable */
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-    transition: background-color 0.2s;
+    font-size: 1rem; /* Consistent font size */
+    transition: all 0.3s var(--transition-timing); /* Consistent transition */
 }
 
+/* .export-btn:hover should be handled by .btn.primary:hover if applied */
+/*
 .export-btn:hover {
-    background-color: #000;
+    background-color: var(--secondary-color);
 }
+*/
 
 /* Form styles */
 .form-container {
     width: 100%;
-    background-color: var(--background-color);
-    padding: 25px;
-    border-radius: 10px;
+    background-color: var(--light-gray); /* Changed to card background color */
+    padding: 1.5rem; /* Consistent padding */
+    border-radius: var(--card-border-radius, 0.75rem); /* Use variable */
     box-shadow: var(--card-shadow);
     margin-bottom: 20px;
 }
@@ -204,7 +209,7 @@ select {
 .fields-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 1rem; /* Consistent gap */
     margin-bottom: 20px;
 }
 
@@ -218,7 +223,7 @@ select {
 }
 
 .field-key input {
-    background-color: rgba(var(--primary-color-rgb), 0.05);
+    background-color: rgba(var(--primary-color-rgb), 0.08); /* Slightly darker */
 }
 
 .field-actions {
@@ -227,16 +232,17 @@ select {
 }
 
 .add-btn {
-    padding: 8px 16px;
-    background-color: var(--primary-color);
-    color: white;
+    padding: 10px 20px; /* Consistent padding */
+    /* background-color and color should be handled by .btn.primary */
+    /* background-color: var(--primary-color); */
+    /* color: white; */
     border: none;
-    border-radius: 5px;
+    border-radius: var(--btn-border-radius, 0.375rem); /* Use variable */
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: 1rem; /* Consistent font size */
     transition: all 0.3s var(--transition-timing);
 }
 
@@ -248,20 +254,20 @@ select {
 .remove-field {
     background-color: transparent;
     border: none;
-    color: #ff3b30;
+    color: var(--danger-color, #dc3545); /* Use danger color variable */
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.1rem; /* Adjusted font size */
     display: flex;
     align-items: center;
     justify-content: center;
     width: 34px;
     height: 34px;
-    margin-top: 5px;
+    /* margin-top: 5px; */ /* Removed, align with flex */
     transition: all 0.3s var(--transition-timing);
 }
 
 .remove-field:hover {
-    color: #d63030;
+    color: var(--danger-hover-color, #c82333); /* Use danger hover color variable */
     transform: scale(1.1);
 }
 

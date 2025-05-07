@@ -9,10 +9,10 @@
 
 .app-header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.75rem; /* Slightly smaller */
     color: var(--text-color);
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 8px; /* Adjusted padding */
 }
 
 .app-header h1::after {
@@ -20,30 +20,31 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 80px;
-    height: 3px;
+    width: 60px; /* Adjusted width */
+    height: 2px; /* Consistent with h2::after in design-system */
     background-color: var(--primary-color);
 }
 
 .theme-toggle {
-    background-color: var(--light-gray);
+    background-color: transparent; /* Cleaner look */
     color: var(--text-color);
-    border: none;
-    width: 40px;
-    height: 40px;
+    border: 1px solid var(--border-color); /* Added border */
+    width: 38px; /* Slightly smaller */
+    height: 38px; /* Slightly smaller */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.2rem;
-    box-shadow: var(--card-shadow);
+    font-size: 1rem; /* Adjusted font size */
+    box-shadow: none; /* Removed default shadow */
     transition: all 0.3s var(--transition-timing);
 }
 
 .theme-toggle:hover {
+    background-color: var(--light-gray); /* Use card background for hover */
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow); /* Use design system shadow on hover */
 }
 
 /* Styling for selects */
@@ -56,28 +57,12 @@
     padding-right: 40px;
 }
 
-/* Editor content styling */
-.editor-content {
-    display: flex;
-    padding: 15px 0;
-    min-height: 250px;
-    max-height: 350px;
-    overflow-y: auto;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.line-numbers {
-    user-select: none;
-    padding: 0 15px;
-    text-align: right;
-    min-width: 40px;
-}
-
-.code-content {
-    flex: 1;
-    padding: 0 15px;
-}
+/* Editor content styling is now primarily in styles.css, removing redundant/old rules */
+/*
+.editor-content { ... }
+.line-numbers { ... }
+.code-content { ... }
+*/
 
 /* Animation for card window */
 .card-window {
@@ -86,7 +71,7 @@
 
 .card-window:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 10px 25px rgba(0,0,0,0.1); /* Softer hover shadow */
 }
 
 /* Loading spinner */
@@ -117,8 +102,8 @@
     margin-top: 30px;
     padding: 20px 0;
     color: var(--text-color);
-    opacity: 0.7;
-    font-size: 0.9rem;
+    opacity: 0.8; /* Slightly more visible */
+    font-size: 0.875rem; /* Adjusted font size */
     border-top: 1px solid var(--border-color);
     width: 100%;
     display: block;
@@ -129,16 +114,18 @@
     margin-bottom: 30px;
 }
 
-/* Improve spacing for buttons */
+/* Improve spacing for buttons - This is now handled in styles.css or by .btn class from design-system */
+/*
 .export-btn, .add-btn {
     padding: 10px 20px;
 }
+*/
 
 /* Additional styling for vertical layout */
 .controls-container {
-    background-color: var(--background-color);
-    padding: 25px;
-    border-radius: 10px;
+    background-color: var(--light-gray); /* Should be card background */
+    padding: 1.5rem; /* Consistent padding */
+    border-radius: var(--card-border-radius, 0.75rem); /* Consistent border radius */
     box-shadow: var(--card-shadow);
     width: 100%;
     display: flex;
