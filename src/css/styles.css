@@ -164,6 +164,22 @@ body {
     gap: 8px;
 }
 
+.style-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.style-control label {
+    white-space: nowrap; /* Prevent label from wrapping */
+}
+
+.style-control input[type="number"] {
+    width: 70px; /* Adjust width as needed for number inputs */
+    padding: 8px 10px; /* Slightly adjust padding for number inputs if needed */
+    font-size: 0.9rem; /* Slightly smaller font for compact inputs */
+}
+
 select {
     padding: 10px 12px; /* Adjusted padding */
     border-radius: var(--input-border-radius, 0.375rem); /* Use variable from design system */

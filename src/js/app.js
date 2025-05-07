@@ -107,6 +107,14 @@ function setupEventListeners() {
         windowTitle.textContent = `business_card.${currentFormat}`;
         updateCardContent();
     });
+
+    // Font size input
+    const fontSizeInput = document.getElementById('font-size-input');
+    fontSizeInput.addEventListener('input', applyCustomStyles);
+
+    // Line height input
+    const lineHeightInput = document.getElementById('line-height-input');
+    lineHeightInput.addEventListener('input', applyCustomStyles);
 }
 
 // Get current field data from form
@@ -129,12 +137,17 @@ function getFieldData() {
     return data;
 }
 
-// Format data as JSON or YAML
+// Format data as JSON, YAML, or Properties
 function formatData(data) {
     if (currentFormat === 'json') {
         return formatAsJSON(data);
-    } else {
+    } else if (currentFormat === 'yaml') {
         return formatAsYAML(data);
+    } else if (currentFormat === 'properties') {
+        return formatAsProperties(data);
+    } else {
+        // Default to JSON if format is unknown
+        return formatAsJSON(data);
     }
 }
 
@@ -150,7 +163,18 @@ function formatAsYAML(data) {
     for (const key in data) {
         yaml += `${key}: ${data[key]}\n`;
     }
-    return yaml;
+    return yaml.trim(); // Trim trailing newline
+}
+
+// Format data as Properties (KEY=Value)
+function formatAsProperties(data) {
+    let propertiesString = '';
+    for (const key in data) {
+        if (Object.hasOwnProperty.call(data, key)) {
+            propertiesString += `${key}=${data[key]}\n`;
+        }
+    }
+    return propertiesString.trim(); // Trim trailing newline
 }
 
 // Update the card content based on form data
@@ -213,22 +237,23 @@ function updateCardContent() {
             
             codeContent.appendChild(lineElement);
         });
-    } else {
+    } else if (currentFormat === 'yaml') { // Explicitly check for yaml
         // Apply YAML syntax highlighting
         lines.forEach(line => {
             const lineElement = document.createElement('div');
             
             if (line.includes(':')) {
-                const parts = line.split(':');
+                const parts = line.split(/:(.*)/s); // Split only on the first colon
                 const propertyPart = parts[0];
-                const valuePart = parts.slice(1).join(':');
+                const valuePart = parts[1] || ''; // Handle cases with no value after colon
                 
                 const propertyName = document.createElement('span');
                 propertyName.classList.add('property');
                 propertyName.textContent = propertyPart;
                 lineElement.appendChild(propertyName);
                 
-                lineElement.textContent += ':';
+                const colon = document.createTextNode(':');
+                lineElement.appendChild(colon);
                 
                 const valueSpan = document.createElement('span');
                 valueSpan.classList.add('string');
@@ -240,18 +265,71 @@ function updateCardContent() {
             
             codeContent.appendChild(lineElement);
         });
+    } else if (currentFormat === 'properties') {
+        // Apply Properties syntax highlighting
+        lines.forEach(line => {
+            const lineElement = document.createElement('div');
+            if (line.includes('=')) {
+                const parts = line.split(/=(.*)/s); // Split only on the first equals sign
+                const keyPart = parts[0];
+                const valuePart = parts[1] || ''; // Handle cases with no value after equals
+
+                const keySpan = document.createElement('span');
+                keySpan.classList.add('property'); // Use 'property' class for keys
+                keySpan.textContent = keyPart;
+                lineElement.appendChild(keySpan);
+
+                const equalsSign = document.createTextNode('=');
+                lineElement.appendChild(equalsSign);
+
+                const valueSpan = document.createElement('span');
+                valueSpan.classList.add('string'); // Use 'string' class for values
+                valueSpan.textContent = valuePart;
+                lineElement.appendChild(valueSpan);
+            } else {
+                // Potentially for comments (e.g. lines starting with #) or empty lines
+                if (line.trim().startsWith('#')) {
+                    const commentSpan = document.createElement('span');
+                    commentSpan.classList.add('comment');
+                    commentSpan.textContent = line;
+                    lineElement.appendChild(commentSpan);
+                } else {
+                    lineElement.textContent = line;
+                }
+            }
+            codeContent.appendChild(lineElement);
+        });
+    } else {
+        // Fallback for any other unknown format (or if you want a plain text view)
+        lines.forEach(line => {
+            const lineElement = document.createElement('div');
+            lineElement.textContent = line;
+            codeContent.appendChild(lineElement);
+        });
     }
     
-    // Dynamically adjust font size based on amount of content
-    adjustFontSize();
+    // Apply custom font size and line height first, then adjust if no custom font size is set
+    applyCustomStyles(); // Apply user-defined styles
+    adjustFontSize(); // Dynamically adjust font size if not set by user
 }
 
 // Dynamically adjust font size based on content amount
 function adjustFontSize() {
     const codeContent = document.getElementById('code-content');
+    const lineNumbers = document.getElementById('line-numbers');
+    const fontSizeInput = document.getElementById('font-size-input');
+
+    // If user has set a font size, respect it and do not auto-adjust
+    if (fontSizeInput.value && parseFloat(fontSizeInput.value) > 0) {
+        // Ensure line numbers also get this font size if not handled by applyCustomStyles directly for line numbers
+        // applyCustomStyles already handles codeContent, this is a fallback or explicit set for lineNumbers
+        // lineNumbers.style.fontSize = `${parseFloat(fontSizeInput.value)}px`;
+        return;
+    }
+
     const lineCount = codeContent.childElementCount;
     
-    // Base size
+    // Base size for auto-adjustment
     let fontSize = 14;
     
     // Adjust based on number of lines
@@ -270,4 +348,36 @@ function adjustFontSize() {
     // Apply the font size
     codeContent.style.fontSize = `${fontSize}px`;
     document.getElementById('line-numbers').style.fontSize = `${fontSize}px`;
+}
+
+// Apply custom styles from input fields
+function applyCustomStyles() {
+    const codeContent = document.getElementById('code-content');
+    const lineNumbers = document.getElementById('line-numbers');
+    const fontSizeInput = document.getElementById('font-size-input');
+    const lineHeightInput = document.getElementById('line-height-input');
+
+    const fontSize = fontSizeInput.value;
+    const lineHeight = lineHeightInput.value;
+
+    if (fontSize && parseFloat(fontSize) > 0) {
+        const newFontSize = `${parseFloat(fontSize)}px`;
+        codeContent.style.fontSize = newFontSize;
+        lineNumbers.style.fontSize = newFontSize; // Also apply to line numbers
+    } else {
+        // If font size input is cleared, let adjustFontSize handle it or reset to a default
+        // For now, if cleared, adjustFontSize will take over.
+        // Alternatively, reset to a default:
+        // codeContent.style.fontSize = '14px';
+        // lineNumbers.style.fontSize = '14px';
+    }
+
+    if (lineHeight && parseFloat(lineHeight) > 0) {
+        codeContent.style.lineHeight = lineHeight;
+        lineNumbers.style.lineHeight = lineHeight; // Also apply to line numbers
+    } else {
+        // Reset to a default if cleared
+        // codeContent.style.lineHeight = '1.5';
+        // lineNumbers.style.lineHeight = '1.5';
+    }
 }
