@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCardContent();
     
     // Set default theme
-    applyTheme('dark');
+    applyTheme('dracula');
     
     // Update theme toggle based on system preference
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
