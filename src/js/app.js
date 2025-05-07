@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Set default theme
     applyTheme('dracula');
-    
+    updateWindowTitleText(); // Set initial window title
+
     // Update theme toggle based on system preference
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     if (prefersDarkScheme.matches) {
@@ -103,8 +104,8 @@ function setupEventListeners() {
     const formatSelect = document.getElementById('format-select');
     formatSelect.addEventListener('change', (e) => {
         currentFormat = e.target.value;
-        const windowTitle = document.getElementById('window-title');
-        windowTitle.textContent = `business_card.${currentFormat}`;
+        // windowTitle.textContent = `business_card.${currentFormat}`; // Old logic
+        updateWindowTitleText(); // New logic
         updateCardContent();
     });
 
@@ -115,6 +116,14 @@ function setupEventListeners() {
     // Line height input
     const lineHeightInput = document.getElementById('line-height-input');
     lineHeightInput.addEventListener('input', applyCustomStyles);
+
+    // Filename input
+    const filenameInput = document.getElementById('filename-input');
+    filenameInput.addEventListener('input', updateWindowTitleText);
+
+    // Extension toggle
+    const extensionToggle = document.getElementById('extension-toggle');
+    extensionToggle.addEventListener('change', updateWindowTitleText);
 }
 
 // Get current field data from form
@@ -380,4 +389,19 @@ function applyCustomStyles() {
         // codeContent.style.lineHeight = '1.5';
         // lineNumbers.style.lineHeight = '1.5';
     }
+}
+
+// Update the window title text based on custom filename and format
+function updateWindowTitleText() {
+    const windowTitleElement = document.getElementById('window-title');
+    const filenameInput = document.getElementById('filename-input');
+    const extensionToggle = document.getElementById('extension-toggle');
+
+    let filenameBase = filenameInput.value.trim() || 'business_card'; // Default if empty
+    let title = filenameBase;
+
+    if (extensionToggle.checked) {
+        title += `.${currentFormat}`;
+    }
+    windowTitleElement.textContent = title;
 }
